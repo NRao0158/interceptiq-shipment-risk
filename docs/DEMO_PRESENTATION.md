@@ -6,5 +6,5 @@
 4. ML: causal hold-time context; chronological package split; baselines and selected model; threshold tradeoff.
 5. Demo: score a held package, then CREATED → HOLD → SCAN → confirmed alert.
 6. Reliability: repeat event, delayed hold, late release, retracted alert; persistent history.
-7. Evaluation: model ranking and false positives; exact 50 scripted escapes; executed tests; Docker-specific verification pending.
+7. Evaluation: model ranking and false positives; exact 50 scripted escapes; 12 automated tests; verified PostgreSQL/RabbitMQ delivery, duplicates, late events, dead letters and outage recovery.
 8. Handoff: README commands, API docs, reproducibility, future calibration and domain-data collection.

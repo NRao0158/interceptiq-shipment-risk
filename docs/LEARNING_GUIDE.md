@@ -6,7 +6,7 @@
 4. Read store.py. Explain event idempotency, event-time recomputation, alert revisions and transactional outbox. Explain why a late release might retract an earlier alert.
 5. Read worker.py. Explain publisher confirms, consumer acknowledgements and the crash window that makes delivery at least once rather than exactly once.
 6. Run tests and the complete ingestion fixture. Send events twice and demonstrate stable alert/message counts.
-7. Run Docker stack after installation, verify queue confirms and persisted inbox rows. Until then, describe broker integration as implemented but unverified.
+7. Inspect the verified Docker stack: queue confirms, persisted inbox rows and outage recovery. Review scripts/verify_stack.py and the test results to understand which failure modes were exercised. Local integration is verified; production reliability is not established.
 
 ## Two-minute demonstration
 

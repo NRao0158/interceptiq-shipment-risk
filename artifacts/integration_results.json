@@ -1,0 +1,15 @@
+{
+  "scope": "Local Docker Desktop PostgreSQL 16 and RabbitMQ 4 integration; synthetic events only",
+  "api_port": 8001,
+  "fixture": {"events": 2050, "alerts": 50, "outbox_published": 50, "inbox": 50},
+  "duplicate_ingestion": "passed",
+  "broker_redelivery_deduplication": "passed",
+  "dead_letter_routing": "passed",
+  "acknowledgement_delivery": "passed",
+  "late_release_retraction_delivery": "passed",
+  "broker_outage_pending_alert": "persisted",
+  "automatic_broker_recovery": "passed",
+  "container_recreation_persistence": "passed",
+  "final_counts": {"events": 2055, "historical_alerts": 52, "outbox_published": 54, "outbox_pending": 0, "inbox": 54},
+  "delivery_guarantee": "at least once with consumer inbox deduplication"
+}

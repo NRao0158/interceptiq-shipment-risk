@@ -43,7 +43,13 @@ def consumer(store):
 def main():
     parser=argparse.ArgumentParser(); parser.add_argument('mode',choices=['publish','consume']); parser.add_argument('--once',action='store_true'); args=parser.parse_args()
     store=Store(os.getenv('DATABASE_URL','sqlite:///interceptiq.db'))
-    if args.mode=='consume': return consumer(store)
+    if args.mode=='consume':
+        while True:
+            try: consumer(store)
+            except KeyboardInterrupt: return
+            except Exception as exc:
+                print('Retrying consumer connection:',type(exc).__name__,flush=True)
+                time.sleep(3)
     while True:
         try: print('Published:',publisher(store),flush=True)
         except Exception as exc: print('Retrying broker connection:',type(exc).__name__,flush=True)

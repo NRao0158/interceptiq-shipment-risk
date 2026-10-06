@@ -25,7 +25,7 @@ services:
     build: .
     environment:
       DATABASE_URL: postgresql+psycopg://interceptiq:${DB_PASSWORD}@db:5432/interceptiq
-    ports: ["127.0.0.1:8000:8000"]
+    ports: ["127.0.0.1:${API_PORT:-8000}:8000"]
     healthcheck:
       test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health')"]
       interval: 5s

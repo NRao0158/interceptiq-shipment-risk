@@ -15,7 +15,9 @@ Use README instructions to run the Streamlit demo and SQLite API separately. Nei
 5. Inspect `docker compose logs publisher consumer` and API `/outbox`.
 6. Pending rows should become published; consumer should store message identifiers once.
 
-Broker/consumer operation must be verified on this stack before claiming real RabbitMQ integration was tested. Provided publisher tests use an injected transport, not a running broker. PostgreSQL-specific behavior likewise requires integration verification. Do not run local SQLite API concurrently on the same port as Docker API.
+The live PostgreSQL/RabbitMQ stack was verified on Docker Desktop: complete fixture delivery, ingestion and transport deduplication, acknowledgements, late-event retractions, dead-letter routing, broker outage recovery and persistence across container recreation. Unit tests still use injected transport; `scripts/verify_stack.py` checks the actual broker and database. Its `full` mode expects a fresh dedicated test database, not the existing workspace database containing prior verification events. Do not erase persistent volumes just to rerun it.
+
+This workspace uses `API_PORT=8001` in ignored `.env`, preserving SQLite on port 8000. Use http://127.0.0.1:8001/docs and `python -m scripts.replay --url http://127.0.0.1:8001`. `docker compose up -d` uses the saved port automatically. `docker compose down` stops/removes containers but preserves volumes; do not add `-v` unless you intend to delete test data.
 
 ## Free public prediction demo
 

@@ -59,6 +59,10 @@ docker compose logs publisher consumer
 
 Open API docs at http://127.0.0.1:8000/docs and RabbitMQ management at http://127.0.0.1:15672. Management user: `interceptiq`; password is local `MQ_PASSWORD` from `.env`. Do not share or commit `.env`. Stop with `docker compose down` (volumes retained). This stack is a local test configuration, not a production deployment.
 
+If port 8000 is already used by the SQLite API, set `API_PORT=8001` in `.env` and replay with `python -m scripts.replay --url http://127.0.0.1:8001`. This workspace uses port 8001: API documentation is at http://127.0.0.1:8001/docs.
+
+The PostgreSQL/RabbitMQ stack is verified: 50 fixture alerts delivered, event replay and broker redelivery deduplicated, late release retraction delivered, malformed message dead-lettered, and pending alert delivered after broker outage. Events and inbox/outbox records survived container recreation. See [integration results](docs/TEST_RESULTS.md).
+
 ## API
 
 | Endpoint | Purpose |
@@ -85,4 +89,4 @@ Open API docs at http://127.0.0.1:8000/docs and RabbitMQ management at http://12
 - `tests/`: causality, rule edge cases, API behavior, persistence, retries and UI.
 - `docs/`: architecture, evaluation, deployment, learning guide and resume wording.
 
-Original code is MIT licensed. No third-party shipment dataset is used. Public demo deployment is documented separately and must be verified before claiming it is deployed.
+Original code is MIT licensed. No third-party shipment dataset is used. The public prediction/replay demo is deployed; database, API and queue run locally.
