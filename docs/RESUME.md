@@ -12,4 +12,4 @@ RabbitMQ publisher/consumer and PostgreSQL Docker integration have been verified
 
 ## Resume placement
 
-Replace Cent after reviewing this project's results and understanding the implementation. Keep Web Manager experience. Preserve the FBLA first-place award in an Honors line if space permits. The open LaTeX resume is intentionally unchanged until the user requests the replacement.
+The resume now replaces Cent with InterceptIQ, keeps Web Manager experience, and preserves the FBLA first-place award in an Honors line. Review the project guide and reproduce the demonstration before using the bullets in interviews.

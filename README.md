@@ -6,6 +6,8 @@ Predict which packages under HOLD or REJECT may move before clearance within **6
 
 Independent ML/backend portfolio project. **All shipments, facilities, labels and results are synthetic.** No production connections, carrier validation, live operational savings or guaranteed prevention claims.
 
+New here? Follow the [step-by-step user guide](docs/USER_GUIDE.md) for predictions, event replay, batch scoring, local API use, and an interview demonstration.
+
 ## Two runnable parts
 
 1. **Prediction demo:** Streamlit risk studio, event replay, evidence and batch inference. Loads bundled models; no Docker or training required.
