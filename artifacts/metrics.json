@@ -1,0 +1,189 @@
+{
+  "selected": "logistic",
+  "threshold": 0.12,
+  "cost_assumption": {
+    "false_negative": 8,
+    "false_positive": 1
+  },
+  "validation_average_precision": {
+    "prevalence": 0.15670170827858082,
+    "logistic": 0.35369438686358123,
+    "gradient_boosting": 0.34549421465985086
+  },
+  "test": {
+    "prevalence": {
+      "average_precision": 0.15302613480055022,
+      "roc_auc": 0.5,
+      "precision": 0.15302613480055022,
+      "recall": 1.0,
+      "brier": 0.12961299305615945,
+      "true_positives": 445,
+      "false_positives": 2463,
+      "false_negatives": 0,
+      "true_negatives": 0,
+      "positive_rate": 0.15302613480055022,
+      "packages": 2908
+    },
+    "logistic": {
+      "average_precision": 0.3205094492378033,
+      "roc_auc": 0.7158840730451126,
+      "precision": 0.2382290934645116,
+      "recall": 0.7617977528089888,
+      "brier": 0.11861853462178988,
+      "true_positives": 339,
+      "false_positives": 1084,
+      "false_negatives": 106,
+      "true_negatives": 1379,
+      "positive_rate": 0.15302613480055022,
+      "packages": 2908
+    },
+    "gradient_boosting": {
+      "average_precision": 0.3169428235353273,
+      "roc_auc": 0.7111620523067238,
+      "precision": 0.22524916943521595,
+      "recall": 0.7617977528089888,
+      "brier": 0.11925902743063944,
+      "true_positives": 339,
+      "false_positives": 1166,
+      "false_negatives": 106,
+      "true_negatives": 1297,
+      "positive_rate": 0.15302613480055022,
+      "packages": 2908
+    },
+    "departure_rule": {
+      "average_precision": 0.1776681783977289,
+      "roc_auc": 0.558567928943875,
+      "precision": 0.24838012958963282,
+      "recall": 0.25842696629213485,
+      "brier": 0.23314993122420907,
+      "true_positives": 115,
+      "false_positives": 348,
+      "false_negatives": 330,
+      "true_negatives": 2115,
+      "positive_rate": 0.15302613480055022,
+      "packages": 2908
+    }
+  },
+  "shifted_test": {
+    "prevalence": {
+      "average_precision": 0.24133333333333334,
+      "roc_auc": 0.5,
+      "precision": 0.24133333333333334,
+      "recall": 1.0,
+      "brier": 0.191240393891455,
+      "true_positives": 724,
+      "false_positives": 2276,
+      "false_negatives": 0,
+      "true_negatives": 0,
+      "positive_rate": 0.24133333333333334,
+      "packages": 3000
+    },
+    "logistic": {
+      "average_precision": 0.41517194394896145,
+      "roc_auc": 0.7009170882327238,
+      "precision": 0.34250960307298334,
+      "recall": 0.738950276243094,
+      "brier": 0.17526119832948855,
+      "true_positives": 535,
+      "false_positives": 1027,
+      "false_negatives": 189,
+      "true_negatives": 1249,
+      "positive_rate": 0.24133333333333334,
+      "packages": 3000
+    },
+    "gradient_boosting": {
+      "average_precision": 0.4222716361810312,
+      "roc_auc": 0.7096361625998893,
+      "precision": 0.34403953057442865,
+      "recall": 0.7693370165745856,
+      "brier": 0.17404530380333677,
+      "true_positives": 557,
+      "false_positives": 1062,
+      "false_negatives": 167,
+      "true_negatives": 1214,
+      "positive_rate": 0.24133333333333334,
+      "packages": 3000
+    }
+  },
+  "split_counts": {
+    "train": 12048,
+    "validation": 3044,
+    "test": 2908
+  },
+  "features": [
+    "queue_load",
+    "staff_ratio",
+    "scans_last30",
+    "minutes_since_scan",
+    "minutes_to_departure",
+    "route_hops",
+    "weight_kg",
+    "hour",
+    "source",
+    "condition",
+    "service"
+  ],
+  "seed": 42,
+  "horizon_minutes": 60,
+  "timestamp": "2026-10-06T22:02:03.407028+00:00",
+  "sklearn": "1.9.1",
+  "thresholds": {
+    "prevalence": 0.01,
+    "logistic": 0.12,
+    "gradient_boosting": 0.11
+  },
+  "importance": [
+    {
+      "feature": "staff_ratio",
+      "ap_drop": 0.08013173878509589
+    },
+    {
+      "feature": "scans_last30",
+      "ap_drop": 0.0765522803145144
+    },
+    {
+      "feature": "queue_load",
+      "ap_drop": 0.05814953044939954
+    },
+    {
+      "feature": "minutes_to_departure",
+      "ap_drop": 0.029079297497387246
+    },
+    {
+      "feature": "source",
+      "ap_drop": 0.010879508728509438
+    },
+    {
+      "feature": "condition",
+      "ap_drop": 0.005538745984180286
+    },
+    {
+      "feature": "service",
+      "ap_drop": 0.005172480668925783
+    },
+    {
+      "feature": "hour",
+      "ap_drop": 0.0014840273449737706
+    },
+    {
+      "feature": "minutes_since_scan",
+      "ap_drop": 0.0007128416995556552
+    },
+    {
+      "feature": "weight_kg",
+      "ap_drop": 0.00018136099902750966
+    },
+    {
+      "feature": "route_hops",
+      "ap_drop": -0.0003144328331240083
+    }
+  ],
+  "test_ap_bootstrap_95_interval": [
+    0.28194346801627423,
+    0.3665029671572487
+  ],
+  "sha256": {
+    "shifted.csv": "91732daded50131188d72345b3c0cdce411073b020d95fc71a4e2705938b0828",
+    "snapshots.csv": "76201be6d960e2fc3319ab1f478302c74cfc6b197aa93c7f9a62c5bcfb2cba87"
+  }
+}

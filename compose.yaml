@@ -1,0 +1,55 @@
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: interceptiq
+      POSTGRES_USER: interceptiq
+      POSTGRES_PASSWORD: ${DB_PASSWORD:?Set DB_PASSWORD in .env}
+    volumes: ["db-data:/var/lib/postgresql/data"]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U interceptiq"]
+      interval: 5s
+      retries: 20
+  rabbit:
+    image: rabbitmq:4-management-alpine
+    environment:
+      RABBITMQ_DEFAULT_USER: interceptiq
+      RABBITMQ_DEFAULT_PASS: ${MQ_PASSWORD:?Set MQ_PASSWORD in .env}
+    ports: ["127.0.0.1:15672:15672"]
+    volumes: ["mq-data:/var/lib/rabbitmq"]
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "-q", "ping"]
+      interval: 5s
+      retries: 30
+  api:
+    build: .
+    environment:
+      DATABASE_URL: postgresql+psycopg://interceptiq:${DB_PASSWORD}@db:5432/interceptiq
+    ports: ["127.0.0.1:8000:8000"]
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health')"]
+      interval: 5s
+      retries: 20
+    depends_on:
+      db: {condition: service_healthy}
+  publisher:
+    build: .
+    command: ["python", "-m", "interceptiq.worker", "publish"]
+    environment:
+      DATABASE_URL: postgresql+psycopg://interceptiq:${DB_PASSWORD}@db:5432/interceptiq
+      RABBITMQ_URL: amqp://interceptiq:${MQ_PASSWORD}@rabbit:5672/%2F
+    depends_on:
+      api: {condition: service_healthy}
+      rabbit: {condition: service_healthy}
+  consumer:
+    build: .
+    command: ["python", "-m", "interceptiq.worker", "consume"]
+    environment:
+      DATABASE_URL: postgresql+psycopg://interceptiq:${DB_PASSWORD}@db:5432/interceptiq
+      RABBITMQ_URL: amqp://interceptiq:${MQ_PASSWORD}@rabbit:5672/%2F
+    depends_on:
+      api: {condition: service_healthy}
+      rabbit: {condition: service_healthy}
+volumes:
+  db-data:
+  mq-data:
