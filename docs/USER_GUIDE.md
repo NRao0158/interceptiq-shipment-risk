@@ -81,13 +81,3 @@ To repeat the original fixture safely using the existing Python environment:
 Duplicate event IDs do not create new alerts. RabbitMQ management is at http://127.0.0.1:15672 . The username is `interceptiq`; use the local `MQ_PASSWORD` in `.env`. Do not share that file. A consumed queue can show zero ready messages because the consumer has already processed them.
 
 Stop the stack with `docker compose down`. Stored data remains in Docker volumes. Avoid `docker compose down -v`, which deletes those volumes. The free public prediction demo continues running independently.
-
-## 6. Demonstrate it in two minutes
-
-“I built InterceptIQ to predict which held shipments deserve inspection first and detect confirmed movement violations. This is an independent project using synthetic data.”
-
-Show a Risk studio prediction, change one input, then replay HOLD followed by movement. Show the model evidence and explain the baseline and false-positive burden. Finally, open local API alerts and outbox records. Explain that a transactional outbox saves the alert and publication intent together; publisher confirms and consumer deduplication support at-least-once delivery. Broker outage recovery and container persistence were tested locally.
-
-## 7. Prepare for interviews
-
-Read `docs/LEARNING_GUIDE.md`, `docs/MODEL_CARD.md`, and `docs/ARCHITECTURE.md`. Practice explaining chronological splitting, leakage prevention, average precision, source-specific holds, late-event retractions, the outbox, and duplicate delivery. Reproduce a prediction and trace one package through the code. Understand and extend the AI-assisted implementation before presenting it as your own work.
