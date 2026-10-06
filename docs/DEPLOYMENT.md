@@ -1,5 +1,7 @@
 # Deployment and setup
 
+Public demo: https://nihal-interceptiq.streamlit.app/ . Verified on October 6, 2026: saved model inference and confirmed HOLD-to-movement replay render successfully on Streamlit Community Cloud with Python 3.12. GitHub repository: https://github.com/NRao0158/interceptiq-shipment-risk . The API/broker stack remains local.
+
 ## Local quick start
 
 Use README instructions to run the Streamlit demo and SQLite API separately. Neither requires Docker. API startup creates `interceptiq.db`; restarting preserves events/alerts. A clean dedicated database is needed for the exact 50-alert fixture count. Override `DATABASE_URL` to use another file or approved PostgreSQL instance. Never reuse production data.

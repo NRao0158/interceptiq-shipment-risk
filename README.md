@@ -1,5 +1,7 @@
 # InterceptIQ — Shipment Escape Risk Prediction
 
+[Live demo](https://nihal-interceptiq.streamlit.app/) · [GitHub](https://github.com/NRao0158/interceptiq-shipment-risk)
+
 Predict which packages under HOLD or REJECT may move before clearance within **60 simulated minutes**, then detect confirmed stop violations from shipment, screening and brokerage events.
 
 Independent ML/backend portfolio project. **All shipments, facilities, labels and results are synthetic.** No production connections, carrier validation, live operational savings or guaranteed prevention claims.
